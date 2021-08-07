@@ -1,0 +1,47 @@
+package com.javavilnius10.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Table(name = "product")
+@Entity
+@Setter
+@Getter
+@ToString
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String productName;
+    private String unitOfMeasurement; //mato vnt.
+    private Double productQuantity;
+    private Double productPrice;
+    private Double productSalePrice;
+    private String productType;
+
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    private List<SalesLine>salesLineList;
+
+    public Product(String productName, String unitOfMeasurement, Double productQuantity, Double productPrice, Double productSalePrice, String productType, List<SalesLine> salesLineList) {
+        this.productName = productName;
+        this.unitOfMeasurement = unitOfMeasurement;
+        this.productQuantity = productQuantity;
+        this.productPrice = productPrice;
+        this.productSalePrice = productSalePrice;
+        this.productType = productType;
+        this.salesLineList = salesLineList;
+    }
+
+    public Product() {
+    }
+
+}
