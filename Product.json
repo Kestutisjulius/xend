@@ -1,0 +1,29 @@
+[
+	{
+		"id" : 1,
+		"product_name" : "Plokstele",
+		"product_price" : 2.2,
+		"product_quantity" : 200,
+		"product_sale_price" : 3.2,
+		"product_type" : "Ofsetas",
+		"unit_of_measurement" : "vnt"
+	},
+	{
+		"id" : 2,
+		"product_name" : "Popierius",
+		"product_price" : 1.3,
+		"product_quantity" : 5000,
+		"product_sale_price" : 1.5,
+		"product_type" : "Grite",
+		"unit_of_measurement" : "pok."
+	},
+	{
+		"id" : 3,
+		"product_name" : "Spausdintuvas",
+		"product_price" : 3000,
+		"product_quantity" : 2,
+		"product_sale_price" : 4000,
+		"product_type" : "ofiso įranga",
+		"unit_of_measurement" : "vnt"
+	}
+]
