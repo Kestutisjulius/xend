@@ -1,6 +1,7 @@
 package com.javavilnius10.service;
 
 import com.javavilnius10.exception.UserNotFoundException;
+import com.javavilnius10.model.Invoice;
 import com.javavilnius10.model.User;
 import com.javavilnius10.reposirory.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,4 +39,8 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteUserById(id);
     }
+
+    public User findUserByName(String name) { return userRepository.getUserByName(name);
+    }
+
 }

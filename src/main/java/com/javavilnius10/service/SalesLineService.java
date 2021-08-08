@@ -20,6 +20,7 @@ public class SalesLineService {
     public SalesLineService(SalesLineRepository salesLineRepository) {
         this.salesLineRepository = salesLineRepository;
     }
+
     public List<SalesLine>getSalesLines(){return salesLineRepository.findAll();}
     public SalesLine getSalesLineByName (String name) {return salesLineRepository.getSalesLineByName(name);}
     public SalesLine getSalesLineById (Long id) {return salesLineRepository.getSalesLineById(id);}

@@ -8,9 +8,10 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@Table(name = "sales_line")
+@Table(name = "salesline")
 @Entity
 @Setter
 @Getter
@@ -24,6 +25,11 @@ public class SalesLine {
     private String name;
     private LocalDateTime nowDateTime;
     private Double quantityOfProduct;
+
+    @ManyToOne
+    @JoinColumn(name = "invoice_id")
+    @JsonBackReference
+    private Invoice invoice;
 
 
     @ManyToOne
@@ -43,6 +49,17 @@ public class SalesLine {
         this.user = user;
         this.product = product;
     }
+
+    public SalesLine(String name, String nowDateTime, Double quantityOfProduct, User user, Product product) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        this.name = name;
+        this.nowDateTime = LocalDateTime.parse(nowDateTime,formatter);
+        this.quantityOfProduct = quantityOfProduct;
+        this.user = user;
+        this.product = product;
+    }
+
+
 
     public SalesLine() {
     }

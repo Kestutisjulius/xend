@@ -35,8 +35,12 @@ public class User {
     @JsonIgnore
     private List<SalesLine>salesLineList;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Invoice>invoiceList;
 
-    public User(String companyName, String registrationNumber, String vatNumber, String telephoneNumber, String address, String email, String bankData, String username, String password, Boolean admin, Boolean enabled, List<SalesLine> salesLineList) {
+
+    public User(String companyName, String registrationNumber, String vatNumber, String telephoneNumber, String address, String email, String bankData, String username, String password, Boolean admin, Boolean enabled) {
         this.companyName = companyName;
         this.registrationNumber = registrationNumber;
         this.vatNumber = vatNumber;
@@ -48,8 +52,13 @@ public class User {
         this.password = password;
         this.admin = admin;
         this.enabled = enabled;
+
+    }
+
+    public User(List<SalesLine> salesLineList) {
         this.salesLineList = salesLineList;
     }
+
 
     public User() {
     }

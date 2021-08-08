@@ -1,19 +1,39 @@
 package com.javavilnius10.config;
 
+import com.github.javafaker.Faker;
+import com.javavilnius10.model.Product;
+import com.javavilnius10.model.SalesLine;
 import com.javavilnius10.model.User;
+import com.javavilnius10.reposirory.ProductRepository;
+import com.javavilnius10.reposirory.SalesLineRepository;
 import com.javavilnius10.reposirory.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 public class PredefinedDataFillerUSER {
+
+    Faker faker = new Faker();
+
     @Bean
-    CommandLineRunner commandLineRunner(UserRepository userRepository) {
+    CommandLineRunner commandLineRunner(UserRepository userRepository, ProductRepository productRepository, SalesLineRepository salesLineRepository) {
         return args -> {
-            userRepository.save(new User("UAB company", "LT112455422554", "1235444", "+37055448877", "Gedimino str. 11", "company@gmail.com", "SWED LT212254478", "user1", "user1", true, true,null));
-            userRepository.save(new User("UAB OLIALIA", "LT2558741", "2355448", "+371895456", "Laisves str. 11", "olia@gmail.com", "SEB LT45658787", "user2", "user2", false, false, null));
-            userRepository.save(new User("UAB LTCEO", "LT162455522594", "239449", "+370558741", "Zalgyrio str. 15", "ltceo@gmail.com", "LUMINOR L485354896", "user3", "user3", false, false, null));
+            productRepository.save(new Product(faker.expression("thing"), faker.gameOfThrones().city(), faker.number().randomDouble(3, 1,99), faker.number().randomDouble(3,1, 99), faker.number().randomDouble(3,1, 99), faker.university().name()));
+            productRepository.save(new Product(faker.expression("thing"), faker.gameOfThrones().city(), faker.number().randomDouble(3, 1,99), faker.number().randomDouble(3,1, 99), faker.number().randomDouble(3,1, 99), faker.university().name()));
+            userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
+            userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
+            userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
+            userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
+            userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
+            userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
+            userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
+            salesLineRepository.save(new SalesLine(faker.file().fileName(), LocalDateTime.now(), faker.number().randomDouble(3,1,99), null, null));
+
         };
     }
 }

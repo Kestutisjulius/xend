@@ -31,13 +31,16 @@ public class Product {
     @JsonIgnore
     private List<SalesLine>salesLineList;
 
-    public Product(String productName, String unitOfMeasurement, Double productQuantity, Double productPrice, Double productSalePrice, String productType, List<SalesLine> salesLineList) {
+    public Product(String productName, String unitOfMeasurement, Double productQuantity, Double productPrice, Double productSalePrice, String productType) {
         this.productName = productName;
         this.unitOfMeasurement = unitOfMeasurement;
         this.productQuantity = productQuantity;
         this.productPrice = productPrice;
         this.productSalePrice = productSalePrice;
         this.productType = productType;
+    }
+
+    public Product(List<SalesLine> salesLineList) {
         this.salesLineList = salesLineList;
     }
 
