@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/invoice")
-@CrossOrigin(origins = "http://localhost:4200/invoice")
+@CrossOrigin(origins = "http://localhost:4200")
 public class InvoiceController {
     private final InvoiceService invoiceService;
 

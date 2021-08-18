@@ -3,9 +3,11 @@ package com.javavilnius10.reposirory;
 import com.javavilnius10.model.SalesLine;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface SalesLineRepository extends JpaRepository<SalesLine, Long> {
@@ -17,4 +19,8 @@ public interface SalesLineRepository extends JpaRepository<SalesLine, Long> {
 
     @Query("SELECT l FROM SalesLine l WHERE l.name = ?1")
     SalesLine getSalesLineByName(String name);
+
+    @Query
+    List<SalesLine> findByProduct_Id(@NonNull Long id);
+
 }

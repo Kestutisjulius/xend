@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/salesline")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200/salesline")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SalesLineController {
 
     private final SalesLineService salesLineService;
@@ -37,7 +37,7 @@ public class SalesLineController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<SalesLine> getSalesLineById(@PathVariable Long id) throws SalesLineNotFoundException {
+    public ResponseEntity<SalesLine> getSalesLineById(@PathVariable Long id)  {
         SalesLine salesLine = salesLineService.getSalesLineById(id);
         return new ResponseEntity<>(salesLine, HttpStatus.FOUND);
     }

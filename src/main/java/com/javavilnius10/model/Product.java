@@ -3,16 +3,13 @@ package com.javavilnius10.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "product")
 @Entity
 @Setter
 @Getter
-@ToString
 public class Product {
 
     @Id
@@ -27,9 +24,9 @@ public class Product {
     private String productType;
 
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
     @JsonIgnore
-    private List<SalesLine>salesLineList;
+    private List<SalesLine> salesLineList;
 
     public Product(String productName, String unitOfMeasurement, Double productQuantity, Double productPrice, Double productSalePrice, String productType) {
         this.productName = productName;

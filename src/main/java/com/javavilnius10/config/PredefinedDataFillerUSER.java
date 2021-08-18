@@ -32,7 +32,7 @@ public class PredefinedDataFillerUSER {
             userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
             userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
             userRepository.save(new User(faker.company().name(), faker.company().bs(), faker.code().asin(), faker.phoneNumber().phoneNumber(), faker.address().streetAddressNumber(), faker.internet().emailAddress(), faker.finance().creditCard(), faker.name().username(), faker.code().ean8(), true, true));
-            salesLineRepository.save(new SalesLine(faker.file().fileName(), LocalDateTime.now(), faker.number().randomDouble(3,1,99), null, null));
+            salesLineRepository.save(new SalesLine(faker.file().fileName(), faker.number().randomDouble(2,1,99)));
 
         };
     }

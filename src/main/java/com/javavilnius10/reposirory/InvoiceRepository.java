@@ -8,9 +8,6 @@ import java.time.LocalDate;
 
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
-    @Query("SELECT i FROM Invoice i WHERE i.id = ?1")
-    Invoice getInvoiceById(Long id);
-
     @Query("SELECT d FROM Invoice d WHERE d.dateOfInvoice=?1")
     Invoice getInvoiceByDateOfInvoice(LocalDate date);
 

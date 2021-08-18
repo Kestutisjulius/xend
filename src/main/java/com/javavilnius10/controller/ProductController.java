@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200/product")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
     private final ProductService productService;
 
@@ -29,7 +29,7 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.FOUND);
     }
     @GetMapping("/{name}")
-    public ResponseEntity<Product> getProductByName(@PathVariable String name) throws ProductNotFoundException {
+    public ResponseEntity<Product> getProductByName(@PathVariable String name) {
         Product product = productService.findProductByName(name);
         return  new ResponseEntity<>(product, HttpStatus.FOUND);
     }
