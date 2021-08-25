@@ -2,7 +2,6 @@ package com.javavilnius10.controller;
 
 import com.javavilnius10.exception.ProductNotFoundException;
 import com.javavilnius10.model.Product;
-import com.javavilnius10.model.SalesLine;
 import com.javavilnius10.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

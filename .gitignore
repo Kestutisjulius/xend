@@ -18,6 +18,9 @@ target/
 *.iws
 *.iml
 *.ipr
+*.json
+Product.csv
+xend_reliations.mwb
 
 ### NetBeans ###
 /nbproject/private/

@@ -20,7 +20,5 @@ public interface SalesLineRepository extends JpaRepository<SalesLine, Long> {
     @Query("SELECT l FROM SalesLine l WHERE l.name = ?1")
     SalesLine getSalesLineByName(String name);
 
-    @Query
-    List<SalesLine> findByProduct_Id(@NonNull Long id);
 
 }

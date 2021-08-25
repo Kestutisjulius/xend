@@ -1,6 +1,7 @@
 package com.javavilnius10.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,6 +20,10 @@ public class User {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Authority authority;
+
     private String companyName;
     private String registrationNumber;
     private String vatNumber;
@@ -26,8 +31,11 @@ public class User {
     private String address;
     private String email;
     private String bankData;
+
     private String username; //prisijungimo vardas
+    @Column(nullable = false)
     private String password;
+    @Transient
     private Boolean admin;
     private Boolean enabled;
 
@@ -40,8 +48,9 @@ public class User {
     private List<Invoice>invoiceList;
 
 
-    public User(String companyName, String registrationNumber, String vatNumber, String telephoneNumber, String address, String email, String bankData, String username, String password, Boolean admin, Boolean enabled) {
+    public User(String companyName, Authority authority,String registrationNumber, String vatNumber, String telephoneNumber, String address, String email, String bankData, String username, String password, Boolean admin, Boolean enabled) {
         this.companyName = companyName;
+        this.authority = authority;
         this.registrationNumber = registrationNumber;
         this.vatNumber = vatNumber;
         this.telephoneNumber = telephoneNumber;
@@ -61,5 +70,9 @@ public class User {
 
 
     public User() {
+    }
+
+    public boolean isAdmin() {
+        return admin;
     }
 }

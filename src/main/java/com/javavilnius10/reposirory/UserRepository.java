@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
     void deleteUserById(Long id);
 
-    @Query("SELECT u FROM User u WHERE u.companyName = ?1")
+    @Query("SELECT u FROM User u WHERE u.username = ?1")
     User getUserByName(String name);
+
+
 }
